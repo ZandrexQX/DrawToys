@@ -20,4 +20,9 @@ abstract class Toy {
     public void setChance(double chance) {
         this.chance = chance;
     }
+
+    @Override
+    public String toString() {
+        return "Toy " + name + ", count=" + count;
+    }
 }
