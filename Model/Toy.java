@@ -1,16 +1,20 @@
 package Model;
 
-abstract class Toy {
+abstract public class Toy {
     private static int ID = 0;
     protected int id = 0;
     protected String name;
     protected int count;
     protected double chance = 0.5;
 
-    public Toy(String name, int count){
+    public Toy(String name){
         this.name = name;
-        this.count = count;
+        this.count = 1;
         this.id = ID++;
+    }
+    public Toy(String name, int count){
+        this(name);
+        this.count = count;
     }
 
     public double getChance() {

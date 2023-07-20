@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 public class DrawingMachine {
     private static int ID = 0;
@@ -13,6 +14,9 @@ public class DrawingMachine {
     protected Queue<Toy> prize_toys = new LinkedList<Toy>() {
     };
 
+    public DrawingMachine (){
+        this.id = ID++;
+    }
     public DrawingMachine (Toy toy){
         this.list_toys.add(toy);
         this.id = ID++;
@@ -23,11 +27,14 @@ public class DrawingMachine {
     }
 
     public void Drawing(){
+        Random r = new Random();
         double maxChance = 0;
         Toy prize = null;
         for (Toy toy:this.list_toys) {
-            if (toy.getChance() > maxChance){
-                maxChance = toy.getChance();
+            // добавить рандом
+            double chance = toy.getChance()* r.nextInt(100);
+            if (chance  > maxChance){
+                maxChance = chance;
                 prize = toy;
             }
         }
