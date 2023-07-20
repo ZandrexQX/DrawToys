@@ -32,7 +32,6 @@ public class DrawingMachine {
         Toy prize = null;
         if (this.list_toys.size() != 0) {
             for (Toy toy : this.list_toys) {
-                System.out.println(toy.getChance());
                 double chance = toy.getChance() * r.nextInt(100);
                 if (chance > maxChance) {
                     maxChance = chance;
