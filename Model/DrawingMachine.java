@@ -47,8 +47,8 @@ public class DrawingMachine {
     public Toy getPrize(){
         Toy prize = this.prize_toys.remove();
         String path = "output.txt";
-        try (FileWriter fileWriter = new FileWriter(path, StandardCharsets.UTF_8)) {
-            fileWriter.append("Prize: " + prize);
+        try (FileWriter fileWriter = new FileWriter(path, StandardCharsets.UTF_8, true)) {
+            fileWriter.append("Prize: " + prize + "\n");
             fileWriter.flush();
         } catch (Exception e) {
             e.printStackTrace();
