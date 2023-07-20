@@ -17,6 +17,7 @@ public class View_console {
                     "1. Добавить игрушку\n" +
                     "2. Розыгрыш\n" +
                     "3. Получить игрушку\n" +
+                    "4. Изменить шансы\n" +
                     "0. Выйти");
             System.out.print("Команда: ");
             String in = sc.nextLine();
@@ -40,19 +41,62 @@ public class View_console {
                             break;
                         case "3":
                             app.addBear();
-                            System.out.println("Мишка добавлена");
+                            System.out.println("Мишка добавлен");
                             break;
                         case "0":
                             break;
                     }
                     break;
                 case "2":
-                    app.Draw();
-                    System.out.println("Розыгрыш");
+                    try {
+                        app.Draw();
+                        System.out.println("Розыгрыш");
+                    }
+                    catch (Exception e){
+                        System.out.println("Игрушек больше нет");
+                    }
                     break;
                 case "3":
-                    app.Prize();
-                    System.out.println("Приз выдан");
+                    try {
+                        System.out.println("Приз: " + app.Prize().toString() + " выдан");
+                    }
+                    catch (Exception e){
+                        System.out.println("Все призы выданы");
+                    }
+                    break;
+                case "4":
+                    System.out.println("Выберите игрушку:\n"+
+                            "1. Изменить шанс машинки\n" +
+                            "2. Изменить шанс куклы\n" +
+                            "3. Изменить шанс мишки\n" +
+                            "0. Выйти");
+                    System.out.print("Команда: ");
+                    in = sc.nextLine();
+                    System.out.print("Введите новый шанс: ");
+                    double d = 0.5;
+                    try {
+                        d = Double.parseDouble(sc.nextLine());
+                    }
+                    catch (Exception e){
+                        System.out.println("Данные некорректны");
+                        break;
+                    }
+                    switch (in) {
+                        case "1":
+                            app.chanceCar(d);
+                            System.out.println("Шанс: " + d);
+                            break;
+                        case "2":
+                            app.chanceDoll(d);
+                            System.out.println("Шанс: " + d);
+                            break;
+                        case "3":
+                            app.chanceBear(d);
+                            System.out.println("Шанс: " + d);
+                            break;
+                        case "0":
+                            break;
+                    }
                     break;
                 case "0":
                     flag = false;

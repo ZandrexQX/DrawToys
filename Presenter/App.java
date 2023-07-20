@@ -5,8 +5,11 @@ import Model.*;
 import java.util.ArrayList;
 
 public class App {
+    Car car = new Car("Car");
+    Doll doll = new Doll("Doll");
+    Bear bear = new Bear("Bear");
     protected  DrawingMachine dm;
-    public App(){
+    public App() {
         this.dm = new DrawingMachine();
     }
     public void add(Toy toy){
@@ -16,16 +19,22 @@ public class App {
         this.dm.addToys(toys);
     }
     public void addCar(){
-        Car car = new Car("Car");
-        this.dm.addToy(car);
+        this.dm.addToy(this.car);
     }
     public void addDoll(){
-        Doll doll = new Doll("Doll");
-        this.dm.addToy(doll);
+        this.dm.addToy(this.doll);
     }
     public void addBear(){
-        Bear bear = new Bear("Doll");
-        this.dm.addToy(bear);
+        this.dm.addToy(this.bear);
+    }
+    public void chanceCar(double ch){
+        this.car.setChance(ch);
+    }
+    public void chanceDoll(double ch){
+        this.doll.setChance(ch);
+    }
+    public void chanceBear(double ch){
+        this.bear.setChance(ch);
     }
     public void Draw(){
         this.dm.Drawing();

@@ -30,16 +30,19 @@ public class DrawingMachine {
         Random r = new Random();
         double maxChance = 0;
         Toy prize = null;
-        for (Toy toy:this.list_toys) {
-            // добавить рандом
-            double chance = toy.getChance()* r.nextInt(100);
-            if (chance  > maxChance){
-                maxChance = chance;
-                prize = toy;
+        if (this.list_toys.size() != 0) {
+            for (Toy toy : this.list_toys) {
+                System.out.println(toy.getChance());
+                double chance = toy.getChance() * r.nextInt(100);
+                if (chance > maxChance) {
+                    maxChance = chance;
+                    prize = toy;
+                }
             }
+            this.prize_toys.add(prize);
+            this.list_toys.remove(prize);
         }
-        this.prize_toys.add(prize);
-        this.list_toys.remove(prize);
+        else throw new RuntimeException();
     }
     public Toy getPrize(){
         Toy prize = this.prize_toys.remove();

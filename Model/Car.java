@@ -5,9 +5,11 @@ public class Car extends Toy{
 
     public Car(String name, int count) {
         super(name, count);
+        super.chance = chance;
     }
     public Car(String name) {
         super(name);
+        super.chance = chance;
     }
 
 }
